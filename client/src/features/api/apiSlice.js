@@ -3,7 +3,7 @@ import { userLoggedOut } from '../auth/authSlice';
 
 // prepare a baseQuery
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://localhost:8000/api/',
+  baseUrl: process.env.SERVER_URL,
   prepareHeaders: async (headers, { getState, endpoint }) => {
     return headers;
   },
