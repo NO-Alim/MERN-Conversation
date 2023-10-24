@@ -15,7 +15,7 @@ const friendShipRoute = require('./router/friendShipRoute');
 const conversationRoute = require('./router/conversationsRoute');
 const messageRoute = require('./router/messageRoute');
 const { initializeSocket } = require('./socket/socket');
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8000;
 // connect to database
 connectDB();
 
@@ -57,13 +57,17 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 
 // home route
 // @public
-app.use('/', loginRoute);
-app.use('/users', usersRoute);
-app.use('/friends', friendShipRoute);
-app.use('/conversation', conversationRoute);
-app.use('/message', messageRoute);
+app.use('/api/', loginRoute);
+app.use('/api/users', usersRoute);
+app.use('/api/friends', friendShipRoute);
+app.use('/api/conversation', conversationRoute);
+app.use('/api/message', messageRoute);
+
 //static path
-app.use('/static', express.static(__dirname + '/public'));
+app.use('/api/static', express.static(__dirname + '/public'));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
 
 // register route
 // @public
@@ -74,7 +78,9 @@ app.use(notFoundErrorHandler);
 // default
 app.use(defaultErrorHandler);
 
-const server = app.listen(port, () => {});
+const server = app.listen(port, () => {
+  console.log(`server listening at port ${port}`);
+});
 
 // socket
 const io = initializeSocket(server);
