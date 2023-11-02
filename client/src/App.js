@@ -9,6 +9,7 @@ import ConversationList from './pages/ConversationList';
 import FindFriends from './pages/FindFriends';
 import Friend from './pages/Friend';
 import Login from './pages/Login';
+import PageNotFound from './pages/PageNotFound';
 import Register from './pages/Register';
 import LoadingSpin from './ui/LoadingSpin';
 
@@ -79,6 +80,7 @@ function App() {
               </PublicRoute>
             }
           />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Router>
     </div>

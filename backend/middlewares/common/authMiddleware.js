@@ -5,10 +5,6 @@ const User = require('../../models/People');
 const loginCheck = asyncHandler(async (req, res, next) => {
   let cookies =
     Object.keys(req.signedCookies).length > 0 ? req.signedCookies : null;
-  console.log('Cookies: ', req.cookies);
-
-  // Cookies that have been signed
-  console.log('Signed Cookies: ', req.signedCookies);
   if (cookies) {
     try {
       token = cookies[process.env.COOKIE_NAME];

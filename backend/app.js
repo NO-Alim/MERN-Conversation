@@ -25,7 +25,7 @@ const app = express();
 // cors
 app.use(
   cors({
-    origin: true,
+    origin: 'https://chat-app-8k2k.onrender.com',
     credentials: true,
   })
 );
@@ -65,8 +65,9 @@ app.use('/api/message', messageRoute);
 
 //static path
 app.use('/api/static', express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, '../client', 'build')));
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, '../client', 'build', 'index.html'));
 });
 
 // register route

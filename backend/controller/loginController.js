@@ -30,7 +30,6 @@ const loginUser = asyncHandler(async (req, res) => {
         maxAge: process.env.JWT_EXPIRY,
         httpOnly: true,
         signed: true,
-        sameSite: 'strict',
       })
       .status(201)
       .json({
