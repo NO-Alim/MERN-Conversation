@@ -7,6 +7,7 @@ const baseQuery = fetchBaseQuery({
   prepareHeaders: async (headers, { getState, endpoint }) => {
     return headers;
   },
+  credentials: 'include',
 });
 
 // apiSlice

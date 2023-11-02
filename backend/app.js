@@ -25,23 +25,21 @@ const app = express();
 // cors
 app.use(
   cors({
-    origin: 'https://chat-app-8k2k.onrender.com',
+    origin: 'https://mern-conversation-app.onrender.com/',
     credentials: true,
   })
 );
 
-// response header
-app.use(function (req, res, next) {
-  res.header('Content-Type', 'application/json;charset=UTF-8');
-  res.header('Access-Control-Allow-Credentials', true);
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-  next();
-});
-//
-app.set('trust proxy', 1);
+// // response header
+// app.use(function (req, res, next) {
+//   res.header('Content-Type', 'application/json;charset=UTF-8');
+//   res.header('Access-Control-Allow-Credentials', true);
+//   res.header(
+//     'Access-Control-Allow-Headers',
+//     'Origin, X-Requested-With, Content-Type, Accept'
+//   );
+//   next();
+// });
 
 //
 app.use(express.json());
